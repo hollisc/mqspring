@@ -1,0 +1,25 @@
+apiVersion: v1
+data:
+  CHANNEL: DEV.APP.SVRCONN
+  CONNECTION_NAME: mq(1414)
+  QM: QM1
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2021-04-01T17:16:27Z"
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:data:
+        .: {}
+        f:CHANNEL: {}
+        f:CONNECTION_NAME: {}
+        f:QM: {}
+    manager: Mozilla
+    operation: Update
+    time: "2021-04-01T17:33:02Z"
+  name: mq-client-config
+  namespace: java-test
+  resourceVersion: "942836"
+  selfLink: /api/v1/namespaces/java-test/configmaps/mq-client-config
+  uid: 5bd80506-e81d-4e0f-b257-8f1e843cbe99

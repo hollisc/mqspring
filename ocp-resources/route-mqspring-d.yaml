@@ -1,0 +1,70 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    openshift.io/host.generated: "true"
+  creationTimestamp: "2021-04-01T18:12:14Z"
+  labels:
+    app: mqspring-d
+    app.kubernetes.io/component: mqspring-d
+    app.kubernetes.io/instance: mqspring-d
+    app.kubernetes.io/name: java
+    app.openshift.io/runtime: java
+    app.openshift.io/runtime-version: openjdk-11-el7
+  managedFields:
+  - apiVersion: route.openshift.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:labels:
+          .: {}
+          f:app: {}
+          f:app.kubernetes.io/component: {}
+          f:app.kubernetes.io/instance: {}
+          f:app.kubernetes.io/name: {}
+          f:app.openshift.io/runtime: {}
+          f:app.openshift.io/runtime-version: {}
+      f:spec:
+        f:port:
+          .: {}
+          f:targetPort: {}
+        f:to:
+          f:kind: {}
+          f:name: {}
+          f:weight: {}
+        f:wildcardPolicy: {}
+    manager: Mozilla
+    operation: Update
+    time: "2021-04-01T18:12:14Z"
+  - apiVersion: route.openshift.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        f:ingress: {}
+    manager: openshift-router
+    operation: Update
+    time: "2021-04-01T18:12:14Z"
+  name: mqspring-d
+  namespace: java-test
+  resourceVersion: "955042"
+  selfLink: /apis/route.openshift.io/v1/namespaces/java-test/routes/mqspring-d
+  uid: be978be8-d7fd-484a-b1c8-ac3d167b2c67
+spec:
+  host: mqspring-d-java-test.gk-t01-ocp-4621-6ccd7f378ae819553d37d5f2ee142bd6-0000.tor01.containers.appdomain.cloud
+  port:
+    targetPort: 8080-tcp
+  to:
+    kind: Service
+    name: mqspring-d
+    weight: 100
+  wildcardPolicy: None
+status:
+  ingress:
+  - conditions:
+    - lastTransitionTime: "2021-04-01T18:12:14Z"
+      status: "True"
+      type: Admitted
+    host: mqspring-d-java-test.gk-t01-ocp-4621-6ccd7f378ae819553d37d5f2ee142bd6-0000.tor01.containers.appdomain.cloud
+    routerCanonicalHostname: gk-t01-ocp-4621-6ccd7f378ae819553d37d5f2ee142bd6-0000.tor01.containers.appdomain.cloud
+    routerName: default
+    wildcardPolicy: None
