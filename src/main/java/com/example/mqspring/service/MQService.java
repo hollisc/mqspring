@@ -1,6 +1,7 @@
 package com.example.mqspring.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jms.JmsException;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,9 @@ import org.slf4j.LoggerFactory;
 
 @Service
 public class MQService {
+	
+	@Value("${app.mq.queue-name}")
+    private String queueName;
 
 	@Autowired
 	private JmsTemplate jmsTemplate;
@@ -26,7 +30,7 @@ public class MQService {
 
 		try {
 			String helloWorld = "Hello World!";
-			jmsTemplate.convertAndSend("DEV.QUEUE.1", helloWorld);
+			jmsTemplate.convertAndSend(queueName, helloWorld);
 			LOG.debug("Successfully Sent message: {} to the queue", helloWorld);
 		} catch (JmsException ex) {
 			throw new AppException("MQAPP001", "Error sending message to the queue.", ex);
@@ -35,7 +39,7 @@ public class MQService {
 	
 	public String receiveMessage() {
 	    try{
-	        return jmsTemplate.receiveAndConvert("DEV.QUEUE.1").toString();
+	        return jmsTemplate.receiveAndConvert(queueName).toString();
 	    }catch(JmsException ex) {
 	    	throw new AppException("MQAPP002", "Error receiving message from the queue.", ex);
 	    }
@@ -48,7 +52,7 @@ public class MQService {
 		try {
 			jsonResult = mapper.writerWithDefaultPrettyPrinter()
 			  .writeValueAsString(requestMap);
-		    jmsTemplate.convertAndSend("DEV.QUEUE.1", jsonResult);
+		    jmsTemplate.convertAndSend(queueName, jsonResult);
 		} catch (JsonProcessingException e) {
 			throw new AppException("MQAPP003", "Error processing json request.", e);
 		} catch(JmsException ex) {
