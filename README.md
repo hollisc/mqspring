@@ -3,7 +3,7 @@
 Start the spring boot app:
 
 ```
-./mvnw spring-boot:run -Dspring-boot.run.arguments="--QM=QM1 --CHANNEL=DEV.ADMIN.SVRCONN --CONNECTION_NAME=localhost(1414) --USER=admin --PASSWORD=passw0rd"
+./mvnw spring-boot:run -Dspring-boot.run.arguments="--QM=QM1 --CHANNEL=DEV.ADMIN.SVRCONN --CONNECTION_NAME=localhost(1414) --USER=admin --PASSWORD=passw0rd --QUEUE_NAME=DEV.QUEUE.1 --APP_NAME=mqspring"
 ```
 
 Pull the latest MQ docker image from docker hub:
